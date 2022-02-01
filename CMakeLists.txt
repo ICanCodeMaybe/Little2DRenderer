@@ -4,11 +4,11 @@ project(Sandbox)
 
 add_executable(${PROJECT_NAME} Sandbox/src/main.cpp)
 
-add_subdirectory(Little/src)
+add_subdirectory(Little)
 add_subdirectory(external/glfw)
 
 target_include_directories(${PROJECT_NAME} 
-    PUBLIC Little/src/
+    PUBLIC Little/include
     PUBLIC external/glfw/include/
 )
 

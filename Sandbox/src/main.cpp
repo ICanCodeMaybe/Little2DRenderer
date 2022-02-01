@@ -11,6 +11,10 @@ int main(){
 
     glfwInit();
 
+    LIL_ERROR("You have made mistake")
+    LIL_WARNING("Watchout")
+    LIL_INFO("Some interesting fact")
+
     if(!glfwInit())
         std::cout << "glfw was not initialized \n";
     
