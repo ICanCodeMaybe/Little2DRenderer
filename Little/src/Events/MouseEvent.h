@@ -7,12 +7,12 @@ namespace lil{
     class MouseButton : public Event{
         public:
             inline int GetMouseButton(){ return m_mouseButton; }
-
             inline int GetMode(){ return m_mode; }
 
-            EventType GetEventType() override { return EventType::None; }
-
             void LogIt() { LIL_INFO("Mouse button event: " << m_mouseButton <<  " (mode(int): " << m_mode << ")")}
+
+            SET_EVENT_TYPE(EventType::None);
+            SET_CATEGORY(EventCategory::Mouse | EventCategory::Input)
         protected:
             MouseButton(int mouseButton, int mode) : m_mouseButton(mouseButton), m_mode(mode) 
             {}
@@ -27,8 +27,9 @@ namespace lil{
             MouseButtonDownEvent(int mouseButton, int mouseButtonMode) 
                 : MouseButton(mouseButton, mouseButtonMode)
             {}
-
-            EventType GetEventType() override { return EventType::MouseButtonDown; }
+            
+            SET_EVENT_TYPE(EventType::MouseButtonDown)
+            SET_CATEGORY(EventCategory::Mouse | EventCategory::Input | EventCategory::Down)
     };
 
     class MouseButtonPressedEvent : public MouseButton {
@@ -37,7 +38,8 @@ namespace lil{
                 : MouseButton(mouseButton, mouseButtonMode)
             {}
 
-            EventType GetEventType() override { return EventType::MouseButtonPressed; }
+            SET_EVENT_TYPE(EventType::MouseButtonPressed)
+            SET_CATEGORY(EventCategory::Mouse | EventCategory::Input | EventCategory::Press)
     };
 
         class MouseButtonReleasedEvent : public MouseButton {
@@ -46,14 +48,26 @@ namespace lil{
                 : MouseButton(mouseButton, mouseMode)
             {}
 
-            EventType GetEventType() override { return EventType::MouseButtonReleased; }
+            SET_EVENT_TYPE(EventType::MouseButtonReleased)
+            SET_CATEGORY(EventCategory::Mouse | EventCategory::Input | EventCategory::Release)
     };
 
 
-    class MousePosition{
+    class MousePositionEvent : Event{
         public:
-            MousePosition(float x, float y){
-                
-            }
+            MousePositionEvent(float x, float y)
+                : m_mouseX(x), m_mouseY(y)
+            {}
+
+            float GetMouseX(){ return m_mouseX; }
+            float GetMouseY(){ return m_mouseY; }
+
+            void LogIt()
+            { LIL_INFO("Mouse Event: " << m_mouseX << ", " << m_mouseY) }
+
+            SET_EVENT_TYPE(EventType::MousePositionChanged)
+            SET_CATEGORY(EventCategory::Mouse | EventCategory::Input)
+        private:
+            float m_mouseX, m_mouseY;
     };
 }

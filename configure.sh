@@ -1,4 +1,4 @@
 #! /bin/bash
 
 
-cmake -S . -B out/build/
+cmake -S Sandbox/ -B out/build/

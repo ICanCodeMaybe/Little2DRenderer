@@ -1,16 +1,30 @@
-add_library(Little src/Application.cpp src/log.h src/Application.h src/Events/KeyboardEvent.h src/Events/MouseEvent.h src/Events/Event.h)
+cmake_minimum_required(VERSION 3.18.1)
+project(Little)
 
-#add_subdirectory(${PROJECT_NAME} ../external/glfw)
+set(LITTLE_HEADERS 
+    src/log.h src/Application.h 
+    src/Events/KeyboardEvent.h src/Events/MouseEvent.h 
+    src/Events/Event.h)
 
-#MUSÍM PŘEDĚLAT CMAKE, ABY LITTLE BYL PROKEKT
+set(LITTLE_CPP
+    src/Application.cpp)
+add_library(${PROJECT_NAME} ${LITTLE_CPP} ${LITTLE_HEADERS})
 
-target_include_directories(${PROJECT_NAME} 
-    PRIVATE .
+add_subdirectory(../external/glfw glfw/)
+
+
+target_include_directories(${PROJECT_NAME}
+    PUBLIC .
+    PUBLIC src/
     PRIVATE ../external/glad/include/glad/
+    PRIVATE ../external/glfw/include/
 )
 
-target_link_directories(${PROJECT_NAME}     
+target_link_directories(${PROJECT_NAME}
+    PUBLIC .
+    PUBLIC src/     
     PRIVATE ../external/glad/include/glad/
+    PRIVATE ../external/glfw/src/
 )
 
 target_link_libraries(${PROJECT_NAME} glfw)

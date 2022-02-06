@@ -1,7 +1,7 @@
 #include "Application.h"
 
-    lil::Application* lil::Application::s_instance;
 namespace lil{
+    Application* Application::s_instance;
 
     Application::Application(){
     }
@@ -12,6 +12,10 @@ namespace lil{
     Application::~Application(){}
 
     Application* Application::Get(){
+        if(!s_instance){
+            s_instance = new Application;
+            LIL_INFO("CREATED APP")
+        }
         return Application::s_instance;
     }
 }
