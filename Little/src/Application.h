@@ -2,6 +2,7 @@
 
 #include "log.h"
 
+struct GLFWwindow;
 
 namespace lil{
 
@@ -12,10 +13,14 @@ namespace lil{
         
             void Init();
         
+            void CreateOpenglContext(GLFWwindow* window);
+
         private:
             Application();
             ~Application();
-
+            
+            GLFWwindow* m_window;
+            
             static Application* s_instance;
     };
 

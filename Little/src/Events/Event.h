@@ -10,7 +10,7 @@ namespace lil{
         Input       = BIT_SHIFT(1),
         Mouse       = BIT_SHIFT(2),
         Keyboard    = BIT_SHIFT(3),
-        Window      = BIT_SHIFT(4),
+        Windows      = BIT_SHIFT(4),
         Press       = BIT_SHIFT(5),
         Down        = BIT_SHIFT(6),
         Release     = BIT_SHIFT(7)
@@ -36,6 +36,12 @@ namespace lil{
 
         virtual int GetCategoryFlags() = 0;
         virtual EventType GetEventType() = 0;
+
+        bool IsInCategory(int EventCategory) { return GetCategoryFlags() & EventCategory;}
+        protected:
+            bool m_handled = false;
+
+        friend class Dispatcher;
     };
 
     class Dispatcher{
@@ -51,7 +57,7 @@ namespace lil{
         bool Dispatch(std::function<bool(T&)> EventFunction){
 
             if(m_event.GetEventType() == T::GetStaticEventType()){
-                EventFunction(*(T*)&m_event);
+                m_event.m_handled = EventFunction(*(T*)&m_event);
                 return true;
             }
 

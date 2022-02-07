@@ -9,20 +9,32 @@ void ok();
 bool OnMouseButtonDown(lil::MouseButtonDownEvent& e);
 bool OnKeyDown(lil::KeyDownEvent& e);
 
+bool shouldClose = false;
 int main(){
 
     lil::Application::Get()->Init();
 
+//window creation
+    lil::Window window;
+    lil::WindowSpecs spec;
+    window.Create(spec);
+
+    lil::Application::Get()->CreateOpenglContext(window.GetWindowPointer());
+
     lil::KeyDownEvent eKey(GLFW_KEY_W, false);
-
     lil::MouseButtonDownEvent eMouse(GLFW_MOUSE_BUTTON_1, GLFW_PRESS);
-
+    
     lil::Dispatcher dispatcher(eMouse);
     dispatcher.Dispatch<lil::MouseButtonDownEvent>(OnMouseButtonDown);
-
     lil::Dispatcher disKey(eKey);
     disKey.Dispatch<lil::KeyDownEvent>(OnKeyDown);
 
+    while(!shouldClose){
+        window.ClearWithColor(1.0f, 0.0f, 1.0f, 1.0f);
+
+        window.HandleEvents();
+        window.SwapBuffers();
+    }
     return 0;
 }
 
