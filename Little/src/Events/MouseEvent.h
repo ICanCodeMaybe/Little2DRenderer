@@ -53,7 +53,7 @@ namespace lil{
     };
 
 
-    class MousePositionEvent : Event{
+    class MousePositionEvent : public Event{
         public:
             MousePositionEvent(float x, float y)
                 : m_mouseX(x), m_mouseY(y)

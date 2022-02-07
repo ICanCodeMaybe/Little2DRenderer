@@ -32,5 +32,7 @@ namespace lil{
         GLFWwindow* GetWindowPointer() { return m_window; }
     private:
         GLFWwindow* m_window;
+
+        WindowSpecs* m_windowSpecs = nullptr;
     };
 }
