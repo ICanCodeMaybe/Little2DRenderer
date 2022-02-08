@@ -115,8 +115,8 @@ namespace lil{
         glfwPollEvents();
     }
 
-    void Window::ClearWithColor(float r, float g,float b,float a){
-        glClearColor(r, g, b, a);
+    void Window::ClearWithColor(glm::vec4 color){
+        glClearColor(color.r, color.g, color.b, color.a);
         glClear(GL_COLOR_BUFFER_BIT);
     }
 }

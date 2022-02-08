@@ -2,6 +2,7 @@
 #include <functional>
 
 #include "src/Events/Event.h"
+#include <glm/glm.hpp>
 
 struct GLFWwindow;
 
@@ -27,7 +28,7 @@ namespace lil{
         void SwapBuffers();
         void HandleEvents();
 
-        void ClearWithColor(float r, float g,float b,float a);
+        void ClearWithColor(glm::vec4 color);
 
         GLFWwindow* GetWindowPointer() { return m_window; }
     private:

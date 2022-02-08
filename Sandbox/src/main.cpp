@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 
-#include <GLFW/glfw3.h>
+//#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
 #include <Little.h>
 
@@ -27,7 +28,7 @@ int main(){
 
 
     while(!shouldClose){
-        window.ClearWithColor(1.0f, 0.0f, 1.0f, 1.0f);
+        window.ClearWithColor(glm::vec4(0.5f, 0.1f, 0.7f, 1.0f));
 
         window.HandleEvents();
         window.SwapBuffers();

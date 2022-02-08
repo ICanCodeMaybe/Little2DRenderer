@@ -18,12 +18,14 @@ add_library(${PROJECT_NAME} ${LITTLE_CPP} ${LITTLE_HEADERS})
 
 add_subdirectory(../external/glfw glfw/)
 add_subdirectory(../external/glad glad/)
+add_subdirectory(../external/glm glm/)
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC .
     PUBLIC src/
     PRIVATE ../external/glad/include/
     PRIVATE ../external/glfw/include/
+    PUBLIC ../external/glm/
 )
 
 target_link_directories(${PROJECT_NAME}
@@ -34,4 +36,4 @@ target_link_directories(${PROJECT_NAME}
     PRIVATE ../external/glfw/src/
 )
 
-target_link_libraries(${PROJECT_NAME} glfw glad)
+target_link_libraries(${PROJECT_NAME} glfw glad glm)
