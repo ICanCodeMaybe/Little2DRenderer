@@ -10,4 +10,7 @@
 
 #include "src/Window.h"
 
+#include "src/Renderer/Buffers.h"
+#include "src/Renderer/Shader.h"
+
 void SaySomething(const char*);

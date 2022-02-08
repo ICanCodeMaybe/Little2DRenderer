@@ -40,6 +40,10 @@ namespace lil{
 
             mySpecs.CallbackEventFn(event);
 
+
+        //-----view port changing------------
+        //-----(temporary)-----------------
+            glViewport(0, 0, width, height);
         });
 
         glfwSetCursorPosCallback(m_window, [](GLFWwindow* window, double xPos, double yPos){

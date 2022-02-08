@@ -7,12 +7,16 @@ set(LITTLE_HEADERS
     src/Events/KeyboardEvent.h src/Events/MouseEvent.h 
     src/Events/Event.h
 #window header
-    src/Window.h)
+    src/Window.h
+#renderer
+    src/Renderer/Buffers.h src/Renderer/Shader.h)
 
 set(LITTLE_CPP
     src/Application.cpp 
 #window
-    src/Window.cpp)
+    src/Window.cpp
+#renderer
+    src/Renderer/Buffers.cpp)
 
 add_library(${PROJECT_NAME} ${LITTLE_CPP} ${LITTLE_HEADERS})
 
@@ -23,17 +27,17 @@ add_subdirectory(../external/glm glm/)
 target_include_directories(${PROJECT_NAME}
     PUBLIC .
     PUBLIC src/
-    PRIVATE ../external/glad/include/
-    PRIVATE ../external/glfw/include/
+    PUBLIC ../external/glad/include/
+    PUBLIC ../external/glfw/include/
     PUBLIC ../external/glm/
 )
 
 target_link_directories(${PROJECT_NAME}
     PUBLIC .
     PUBLIC src/     
-    PRIVATE ../external/glad/include/glad/
-    PRIVATE ../external/glad/src/
-    PRIVATE ../external/glfw/src/
+    PUBLIC ../external/glad/include/glad/
+    PUBLIC../external/glad/src/
+    PUBLIC ../external/glfw/src/
 )
 
 target_link_libraries(${PROJECT_NAME} glfw glad glm)
