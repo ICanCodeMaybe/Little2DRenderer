@@ -12,5 +12,7 @@
 
 #include "src/Renderer/Buffers.h"
 #include "src/Renderer/Shader.h"
+#include "src/Renderer/VertexArray.h"
+#include "src/Renderer/RendererCommand.h"
 
 void SaySomething(const char*);

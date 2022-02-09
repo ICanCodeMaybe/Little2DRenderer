@@ -9,14 +9,16 @@ set(LITTLE_HEADERS
 #window header
     src/Window.h
 #renderer
-    src/Renderer/Buffers.h src/Renderer/Shader.h)
+    src/Renderer/Buffers.h src/Renderer/Shader.h
+    src/Renderer/VertexArray.h src/Renderer/RendererCommand.h)
 
 set(LITTLE_CPP
     src/Application.cpp 
 #window
     src/Window.cpp
 #renderer
-    src/Renderer/Buffers.cpp)
+    src/Renderer/Buffers.cpp  src/Renderer/VertexArray.cpp
+    src/Renderer/RendererCommand.cpp)
 
 add_library(${PROJECT_NAME} ${LITTLE_CPP} ${LITTLE_HEADERS})
 

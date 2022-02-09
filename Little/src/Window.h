@@ -28,7 +28,6 @@ namespace lil{
         void SwapBuffers();
         void HandleEvents();
 
-        void ClearWithColor(glm::vec4 color);
 
         GLFWwindow* GetWindowPointer() { return m_window; }
     private:
