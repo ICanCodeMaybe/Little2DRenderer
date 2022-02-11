@@ -4,6 +4,7 @@
 
 #include "src/log.h"
 #include "VertexArray.h"
+#include "Shader.h"
 
 namespace lil{
 
@@ -14,7 +15,8 @@ namespace lil{
         void SetClearColor(glm::vec4 color);
         void Clear();
 
-        void DrawIndexed(VertexArray& VAO);
+        void DrawIndexed(Shader& shader, VertexArray& VAO);
+        void DrawIndexed(Shader& shader, VertexArray& VAO, glm::mat4& transform);
 
     private:
         RendererCommand();

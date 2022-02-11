@@ -21,35 +21,20 @@ namespace lil{
 
     };
 
-    class KeyDownEvent : public KeyEvent {
-        public:
-            KeyDownEvent(int keyCode, bool wasRepeated) 
-            : m_wasRepeated(wasRepeated), KeyEvent(keyCode){
-
-            }
-            
-            void LogIt(){
-                LIL_INFO("KeyDownEvent(keycode to char): " << (char)KeyEvent::GetKeyCode())
-            }
-
-            SET_EVENT_TYPE(EventType::KeyDown)
-            SET_CATEGORY(EventCategory::Keyboard | EventCategory::Input | EventCategory::Down)
-            inline bool WasKeyDownRepeate() { return m_wasRepeated;}
-
-        private:
-            bool m_wasRepeated;
-    };
 
     class KeyPressedEvent : public KeyEvent {
         public:
-            KeyPressedEvent(int keycode) : KeyEvent(keycode){
+            KeyPressedEvent(int keycode, bool repeated) : KeyEvent(keycode), m_repeated(repeated){
             }
 
+            bool WasRepeated() { return m_repeated; }
             void LogIt(){
                 LIL_INFO("KeyPressedEvent(keycode to char): " << (char)KeyEvent::GetKeyCode())
             }
             SET_EVENT_TYPE(EventType::KeyPressed)
             SET_CATEGORY(EventCategory::Keyboard | EventCategory::Input | EventCategory::Press)
+        private:
+            bool m_repeated;
                 
     };
 

@@ -14,5 +14,5 @@
 #include "src/Renderer/Shader.h"
 #include "src/Renderer/VertexArray.h"
 #include "src/Renderer/RendererCommand.h"
-
-void SaySomething(const char*);
+#include "src/Renderer/OrthoCam.h"
+#include "src/Renderer/Renderer.h"

@@ -85,14 +85,8 @@ namespace lil{
             switch(action){
                 case GLFW_PRESS:
                 {
-                    KeyPressedEvent pressEvent(key);
+                    KeyPressedEvent pressEvent(key, false);
                     mySpecs.CallbackEventFn(pressEvent);
-                    break;
-                }
-                case GLFW_KEY_DOWN:
-                {
-                    KeyDownEvent downEvent(key, false);
-                    mySpecs.CallbackEventFn(downEvent);
                     break;
                 }
                 case GLFW_RELEASE:
@@ -103,8 +97,8 @@ namespace lil{
                 }
                 case GLFW_REPEAT:
                 {
-                    KeyDownEvent downEvent(key, true);
-                    mySpecs.CallbackEventFn(downEvent);
+                    KeyPressedEvent pressEvent(key, true);
+                    mySpecs.CallbackEventFn(pressEvent);
                     break;
                 }
             }

@@ -17,7 +17,15 @@ namespace lil{
         glClear(GL_COLOR_BUFFER_BIT);
     }
 
-    void RendererCommand::DrawIndexed(VertexArray& VAO){
+    void RendererCommand::DrawIndexed(Shader& shader, VertexArray& VAO){
+        shader.Bind();
+        VAO.Bind();
+        glDrawElements(GL_TRIANGLES, VAO.GetIBO()->GetCount(), GL_UNSIGNED_INT, 0);
+    }
+
+    void RendererCommand::DrawIndexed(Shader& shader, VertexArray& VAO, glm::mat4& transform){
+        shader.Bind();
+        shader.setMat4x("model", transform);
         VAO.Bind();
         glDrawElements(GL_TRIANGLES, VAO.GetIBO()->GetCount(), GL_UNSIGNED_INT, 0);
     }
