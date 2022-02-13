@@ -28,7 +28,7 @@ namespace lil{
         void SwapBuffers();
         void HandleEvents();
 
-
+        WindowSpecs* GetWindowSpecification() { return m_windowSpecs; }
         GLFWwindow* GetWindowPointer() { return m_window; }
     private:
         GLFWwindow* m_window;

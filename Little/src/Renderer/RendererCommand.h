@@ -6,6 +6,7 @@
 #include "VertexArray.h"
 #include "Shader.h"
 
+#include "Primitives.h"
 namespace lil{
 
     class RendererCommand{
@@ -16,7 +17,9 @@ namespace lil{
         void Clear();
 
         void DrawIndexed(Shader& shader, VertexArray& VAO);
-        void DrawIndexed(Shader& shader, VertexArray& VAO, glm::mat4& transform);
+        void DrawIndexed(Shader& shader, VertexArray& VAO, glm::mat4& transform);        
+        void DrawQuad(Quad& quad);
+        void DrawCircle(Circle& circle);
 
     private:
         RendererCommand();

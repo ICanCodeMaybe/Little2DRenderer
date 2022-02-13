@@ -16,3 +16,5 @@
 #include "src/Renderer/RendererCommand.h"
 #include "src/Renderer/OrthoCam.h"
 #include "src/Renderer/Renderer.h"
+
+#include "src/Renderer/Primitives.h"

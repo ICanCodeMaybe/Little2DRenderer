@@ -21,14 +21,18 @@ namespace lil{
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     }
 
-    void Application::CreateOpenglContext(GLFWwindow* window){
-        m_window = window;
-        glfwMakeContextCurrent(m_window);
+    void Application::CreateOpenglContext(Window& window){
+        m_window = &window;
+
+        m_GlfwWindow = window.GetWindowPointer();
+        glfwMakeContextCurrent(m_GlfwWindow);
 
         if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
              LIL_ASSERT(1 == 1,"OPENGL CONTEXT WAS NOT CREATED");
         }   
 
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
 
     Application* Application::Get(){

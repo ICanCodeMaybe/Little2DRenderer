@@ -29,8 +29,9 @@ int main(){
     lil::Window window;
     window.Create(spec);
 
-    lil::Application::Get()->CreateOpenglContext(window.GetWindowPointer());
+    lil::Application::Get()->CreateOpenglContext(window);
 
+    lil::Renderer::Get()->SetWindow(&window);
     float data[4*3*2] = {
      0.5f,  0.5f, 0.0f,     1.0f, 0.0f, 0.0f, // top right
      0.5f, -0.5f, 0.0f,     0.0f, 1.0f, 0.0f,// bottom right
@@ -84,6 +85,11 @@ int main(){
     glm::mat4 trans = glm::mat4(1.0f);
     trans = glm::translate(glm::mat4(1.0f), {1.0f, 1.0f, 0.0f});
 
+    lil::Quad quad({0.1f, 0.5f, 0.7f}, {-1.0f, -1.0f});
+
+    lil::Circle circle({1.0f, 1.0f, 0.0f});
+    lil::Shader* mS = circle.GetShader();
+
     while(!shouldClose){
         lil::RendererCommand::Get()->SetClearColor({0.1f, 0.2f, 0.3f, 1.0f});
         lil::RendererCommand::Get()->Clear();
@@ -101,12 +107,16 @@ int main(){
         //settting cameras's postition
         cam.SetPosition({camPos.x, camPos.y, 1.0f});
 
+        //quad
+
         //rendering
         lil::Renderer::Get()->BeginScene(&cam);
 
         lil::Renderer::Get()->DrawIndexed(shader, VAO, trans);
         lil::Renderer::Get()->DrawIndexed(green, TriangleVao, greenTrans);
-        
+        lil::Renderer::Get()->DrawQuad(quad);
+        lil::Renderer::Get()->DrawCircle(circle);
+
         lil::Renderer::Get()->EndScene();
 
         window.HandleEvents();

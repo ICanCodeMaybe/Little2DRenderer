@@ -11,7 +11,8 @@ set(LITTLE_HEADERS
 #renderer
     src/Renderer/Buffers.h src/Renderer/Shader.h
     src/Renderer/VertexArray.h src/Renderer/RendererCommand.h
-    src/Renderer/OrthoCam.h src/Renderer/Renderer.h)
+    src/Renderer/OrthoCam.h src/Renderer/Renderer.h
+    src/Renderer/Primitives.h)
 
 set(LITTLE_CPP
     src/Application.cpp 
@@ -20,7 +21,7 @@ set(LITTLE_CPP
 #renderer
     src/Renderer/Buffers.cpp  src/Renderer/VertexArray.cpp
     src/Renderer/RendererCommand.cpp src/Renderer/OrthoCam.cpp
-    src/Renderer/Renderer.cpp)
+    src/Renderer/Renderer.cpp src/Renderer/Primitives.cpp)
 
 add_library(${PROJECT_NAME} ${LITTLE_CPP} ${LITTLE_HEADERS})
 

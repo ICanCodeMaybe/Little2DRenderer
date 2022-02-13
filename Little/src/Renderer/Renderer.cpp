@@ -18,6 +18,13 @@ namespace lil{
         RendererCommand::Get()->DrawIndexed(shader, VAO, transform);
     }
 
+    void Renderer::DrawQuad(Quad& quad){
+        RendererCommand::Get()->DrawQuad(quad);
+    }
+
+    void Renderer::DrawCircle(Circle& circle){
+        RendererCommand::Get()->DrawCircle(circle);
+    }
     void Renderer::EndScene(){
 
     }

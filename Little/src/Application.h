@@ -1,8 +1,7 @@
 #pragma once
 
 #include "log.h"
-
-struct GLFWwindow;
+#include "Window.h"
 
 namespace lil{
 
@@ -13,14 +12,19 @@ namespace lil{
         
             void Init();
         
-            void CreateOpenglContext(GLFWwindow* window);
+            void CreateOpenglContext(Window& window);
 
+            Window* GetWindow() { return m_window; }
+
+            float GetDeltaTime() { return m_deltaTime; } // returns zero, will be implementec later
         private:
             Application();
             ~Application();
+
+            float m_deltaTime = 0.0f; 
+            GLFWwindow* m_GlfwWindow;
             
-            GLFWwindow* m_window;
-            
+            Window* m_window;
             static Application* s_instance;
     };
 
