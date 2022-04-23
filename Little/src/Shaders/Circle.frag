@@ -3,6 +3,7 @@
 out vec4 oFragment;
 
 in vec2 VertXY;
+in vec3 color; 
 
 uniform vec2 WidthHeight;
 
@@ -17,5 +18,6 @@ void main(){
 
     distance = smoothstep(0.0, 0.01, distance);
     oFragment = vec4(distance);
+    oFragment.rgb = color;
 
 }

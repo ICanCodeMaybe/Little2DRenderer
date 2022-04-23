@@ -47,7 +47,7 @@ namespace lil{
 
         circle.GetShader()->Bind();
         circle.GetShader()->setMat4x("model", circle.GetTransformationMat());
-
+        circle.GetShader()->set3xFloat("inColor", circle.GetColor());
         circle.GetShader()->set2xFloat("WidthHeight", { Renderer::Get()->GetWindow()->GetWindowSpecification()->width,
                                                         Renderer::Get()->GetWindow()->GetWindowSpecification()->height});
 
