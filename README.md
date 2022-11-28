@@ -7,3 +7,5 @@ For configuring cmake, building and running use:
     ./confugure.sh
     ./build.sh
     ./run.sh
+    
+But it's really buggy, probably won't work at it
